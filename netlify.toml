@@ -5,6 +5,8 @@
   publish= "/build"
   command = "yarn build"
 
-  # Directory with the serverless Lambda functions to deploy to AWS.
-  functions = "project/functions/"
 
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
