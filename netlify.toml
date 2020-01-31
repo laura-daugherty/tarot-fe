@@ -4,4 +4,3 @@
   base = "tarot"
   publish= "/build"
   command = "yarn build"
-
