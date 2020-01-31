@@ -21,7 +21,7 @@ function App(props) {
               <Header />
             </div> 
 
-            <Route exact path="/" component={Card} /> 
+            <Route exact path="/" component={Home} /> 
             <Route exact path="/card" component={Card} />
                
           </div>
