@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 // import card from "../Cards/card.js";
 import axios from "axios";
-import { Card, Image } from "semantic-ui-react";
+import { Card, Image, Button, Dimmer, Loader } from "semantic-ui-react";
+import "./cardview.css"
 
 function CardView() {
   const [cards, setCards] = useState([])
   const [deck, setDeck] = useState([])
+  const [loading, setLoading] = useState(true)
 
   let curDeck = []
 
@@ -14,6 +16,7 @@ function CardView() {
       .get("https://tarot-flip.herokuapp.com/cards")
       .then(event => {
         setCards(event.data);
+        setLoading(false)
       })                             
       .catch(error => {
         console.log("ERROR", error);
@@ -70,27 +73,42 @@ function CardView() {
       const threeCards = pickCards()
       return (
         <div> 
-          <button onClick = {() => shuffleDeck()}>Shuffle</button>
-
-          {threeCards.map(card => (
-            <Card key={card.id} className="ui centered card">
-              <div className="image">
-                <Image src={card.cardImage} wrapped ui={false} alt="Wedding photo" />
-              </div>
-              <div className="content">
-                {displayName(card.name, card.order, card.suit)}
-              </div>
-              <div className="description">
-                {card.description}
-              </div>
-            </Card>
-          ))}
-
+          <div className="draw">
+            <Button onClick = {() => shuffleDeck()}>Draw Your Cards</Button>
+          </div>
+          <Card.Group className="centered">
+            {threeCards.map(card => (
+              <Card key={card.id} className="ui card">
+                <Image src={card.cardImage} wrapped ui={true} alt="tarot card image" />
+                <Card.Content>
+                  <Card.Header className="content">
+                    {displayName(card.name, card.order, card.suit)}
+                  </Card.Header>
+                  <Card.Description className="description">
+                    {card.description}
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            ))}
+          </Card.Group>
+        </div>
+      )
+    } else if (loading === true) {
+      return (
+        <div>
+          <div className="draw">
+            <Button onClick = {() => shuffleDeck()}>Draw Your Cards</Button>
+          </div>
+            <Dimmer active inverted>
+              <Loader inverted>Loading</Loader>
+            </Dimmer>
         </div>
       )
     } else {
       return (
-        <button onClick = {() => shuffleDeck()}>Shuffle</button>
+        <div className="draw">
+          <Button onClick = {() => shuffleDeck()}>Draw Your Cards</Button>
+        </div>
       )
     }
   }

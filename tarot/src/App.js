@@ -8,7 +8,7 @@ import "./App.css";
 //Components//
 import Home from "./Components/Views/home";
 import CardView from "./Components/Views/cardView";
-import { Header } from "./Components/Global/Header";
+import { Headerbar } from "./Components/Global/Header";
 
 function App(props) {
 
@@ -18,7 +18,7 @@ function App(props) {
           <div className="App">  
 
             <div> 
-              <Header />
+              <Headerbar />
             </div> 
 
             <Route exact path="/" component={Home} /> 

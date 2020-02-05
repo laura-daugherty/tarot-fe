@@ -1,15 +1,21 @@
 import React from "react";
 import { Link } from 'react-router-dom'
-export const Header = (props) => {
+import {Header, Button} from 'semantic-ui-react'
+import "./header.css"
+export const Headerbar = (props) => {
   return ( 
     <div>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/cards">Cards</Link>
+      <nav className="navbutts">
+        <Button className="linkButton">
+          <Link to="/">Home</Link>
+        </Button>
+        <Button>
+          <Link to="/card">Play</Link>
+        </Button>
       </nav>
-      <header>
-        <p>Tarot is cool.</p>
-      </header>
+      <Header as='h1' className="centered">
+        Tarot Flip
+      </Header>
     </div>
    );
 }
