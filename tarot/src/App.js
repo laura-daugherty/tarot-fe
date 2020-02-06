@@ -10,22 +10,16 @@ import Home from "./Components/Views/home";
 import CardView from "./Components/Views/cardView";
 import { Headerbar } from "./Components/Global/Header";
 
-function App(props) {
+function App() {
 
   return (
-    // <GreetingContext.Provider value={{greeting, setGreeting}}>
-
-          <div className="App">  
-
-            <div> 
-              <Headerbar />
-            </div> 
-
-            <Route exact path="/" component={Home} /> 
-            <Route exact path="/card" component={CardView} />
-               
-          </div>
-
+    <div className="App">  
+      <div> 
+        <Headerbar />
+      </div> 
+      <Route exact path="/" component={Home} /> 
+      <Route exact path="/card" component={CardView} />
+    </div>
   )
 }
 

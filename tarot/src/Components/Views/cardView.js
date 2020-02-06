@@ -13,8 +13,10 @@ function CardView() {
 
   useEffect(() => {
     axios
+      //access DB
       .get("https://tarot-flip.herokuapp.com/cards")
       .then(event => {
+        //set state
         setCards(event.data);
         setLoading(false)
       })                             
@@ -23,6 +25,7 @@ function CardView() {
       });
   }, []);
 
+  //Properly displays name of card
   function displayName(name, order, suit) {
     if (name.length !== 0) {
       return name
@@ -31,7 +34,9 @@ function CardView() {
     }
   }  ;
 
+  //Shuffles deck and sets state 'deck' to the deck sorted into shuffled order
   function shuffleDeck() {
+    //helper function to sort cards into order by "number"
     function compare(a, b) {
       const numA = a.number;
       const numB = b.number;
@@ -43,7 +48,7 @@ function CardView() {
       }
       return comparison;
     }
-
+    //for each card from DB, add a random 'number' value from 0 through the length of the deck
     for (let i = 0; i < cards.length; i++) {
       var card = 
         {
@@ -57,12 +62,12 @@ function CardView() {
         }
       curDeck.push(card)
     }
-    console.log("curDeck unsorted", curDeck)
+    //sorting the deck using sort function
     curDeck.sort(compare)
-    console.log("curDeck sorted", curDeck)
+    //set state 'deck' to shuffled deck
     setDeck(curDeck)
   }
-
+  //returns the first 3 cards from 'deck'
   function pickCards() {
     return deck.slice(0, 3)
   }
@@ -112,7 +117,6 @@ function CardView() {
       )
     }
   }
-
   return (
     display()
   );

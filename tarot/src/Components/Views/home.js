@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import {Container, Button} from 'semantic-ui-react'
 import './cardview.css'
 function Home() {
-
   return (
     <div>
       <Container text>
