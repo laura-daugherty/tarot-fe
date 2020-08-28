@@ -96,107 +96,105 @@ function CardView() {
     console.log("deck", deck)
     if (deck.length > 0) {
       console.log("deck length over 0")
-            if (isThree === true) {
-              return (  
-              <div>
-                <div> 
-                <div className="draw">
-                      <Button onClick = {() => shuffleDeck()}>Shuffle Deck</Button>
-                      <Button onClick = {() => isDisplayTen()}>Draw Your 10 Cards</Button>
-                      <Button onClick = {() => isDisplayThree()}>Draw Your 3 Cards</Button>
-                    </div>
-                </div>        
-                <Card.Group className="centered">
-                {threeCards.map(card => (
-                  <Card key={card.id} className="ui card">
-                    <Image src={card.cardImage} wrapped ui={true} alt="tarot card image" />
-                    <Card.Content>
-                      <Card.Header className="content">
-                        {displayName(card.name, card.order, card.suit)}
-                      </Card.Header>
-                      <Card.Description className="description">
-                        {card.description}
-                      </Card.Description>
-                    </Card.Content>
-                  </Card>
-                ))}
-                </Card.Group>
-              </div> 
-              )
-            }
-            else if (isTen === true) {
-              return (    
-                <div>
-                  <div> 
-                    <div className="draw">
-                      <Button onClick = {() => shuffleDeck()}>Shuffle Deck</Button>
-                      <Button onClick = {() => isDisplayTen()}>Draw Your 10 Cards</Button>
-                      <Button onClick = {() => isDisplayThree()}>Draw Your 3 Cards</Button>
-                    </div>
-
-                  </div>     
-                  <Card.Group className="centered">
-                  {tenCards.map(card => (
-                    <Card key={card.id} className="ui card">
-                      <Image src={card.cardImage} wrapped ui={true} alt="tarot card image" />
-                      <Card.Content>
-                        <Card.Header className="content">
-                          {displayName(card.name, card.order, card.suit)}
-                        </Card.Header>
-                        <Card.Description className="description">
-                          {card.description}
-                        </Card.Description>
-                      </Card.Content>
-                    </Card>
-                  ))}
-                  </Card.Group>
-                </div>  
-
-              )
-            } else {
-              return (
-                <div className="draw">
+      if (isThree === true) {
+        return (  
+        <div>
+          <div> 
+          <div className="draw">
                 <Button onClick = {() => shuffleDeck()}>Shuffle Deck</Button>
                 <Button onClick = {() => isDisplayThree()}>Draw Your 3 Cards</Button>
                 <Button onClick = {() => isDisplayTen()}>Draw Your 10 Cards</Button>
               </div>
-              )
-            }
-           } else if (loading === true) {
-      return (
-        <div>
+          </div>        
+          <Card.Group className="centered">
+          {threeCards.map(card => (
+            <Card key={card.id} className="ui card">
+              <Image src={card.cardImage} wrapped ui={true} alt="tarot card image" />
+              <Card.Content>
+                <Card.Header className="content">
+                  {displayName(card.name, card.order, card.suit)}
+                </Card.Header>
+                <Card.Description className="description">
+                  {card.description}
+                </Card.Description>
+              </Card.Content>
+            </Card>
+          ))}
+          </Card.Group>
+        </div> 
+        )
+      } else if (isTen === true) {
+        return (    
+          <div>
+            <div> 
+              <div className="draw">
+                <Button onClick = {() => shuffleDeck()}>Shuffle Deck</Button>
+                <Button onClick = {() => isDisplayThree()}>Draw Your 3 Cards</Button>
+                <Button onClick = {() => isDisplayTen()}>Draw Your 10 Cards</Button>
+              </div>
+            </div>     
+            <Card.Group className="centered">
+            {tenCards.map(card => (
+              <Card key={card.id} className="ui card">
+                <Image src={card.cardImage} wrapped ui={true} alt="tarot card image" />
+                <Card.Content>
+                  <Card.Header className="content">
+                    {displayName(card.name, card.order, card.suit)}
+                  </Card.Header>
+                  <Card.Description className="description">
+                    {card.description}
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            ))}
+            </Card.Group>
+          </div>  
+
+        )
+      } else {
+        return (
           <div className="draw">
-            <Button onClick = {() => shuffleDeck()}>Shuffle Deck</Button>
-            <Button onClick = {() => isDisplayThree()}>Draw Your 3 Cards</Button>
-            <Button onClick = {() => isDisplayTen()}>Draw Your 10 Cards</Button>
-          </div>
-            <Dimmer active inverted>
-              <Loader inverted>Loading</Loader>
-            </Dimmer>
-        </div>
-      )
-    } else if (shuffling === true) {
-      return (
-        <div>
-          <div className="draw">
-            <Button onClick = {() => shuffleDeck()}>Shuffle Deck</Button>
-            <Button onClick = {() => isDisplayThree()}>Draw Your 3 Cards</Button>
-            <Button onClick = {() => isDisplayTen()}>Draw Your 10 Cards</Button>
-          </div>
-            <Dimmer active inverted>
-              <Loader inverted>Shuffling</Loader>
-            </Dimmer>
-        </div>
-      )
-    } else {
-      return (
-        <div className="draw">
           <Button onClick = {() => shuffleDeck()}>Shuffle Deck</Button>
+          <Button onClick = {() => isDisplayThree()}>Draw Your 3 Cards</Button>
+          <Button onClick = {() => isDisplayTen()}>Draw Your 10 Cards</Button>
         </div>
-      )
+        )
+      }
+      } else if (loading === true) {
+        return (
+          <div>
+            <div className="draw">
+              <Button onClick = {() => shuffleDeck()}>Shuffle Deck</Button>
+              <Button onClick = {() => isDisplayThree()}>Draw Your 3 Cards</Button>
+              <Button onClick = {() => isDisplayTen()}>Draw Your 10 Cards</Button>
+            </div>
+              <Dimmer active inverted>
+                <Loader inverted>Loading</Loader>
+              </Dimmer>
+          </div>
+        )
+      } else if (shuffling === true) {
+        return (
+          <div>
+            <div className="draw">
+              <Button onClick = {() => shuffleDeck()}>Shuffle Deck</Button>
+              <Button onClick = {() => isDisplayThree()}>Draw Your 3 Cards</Button>
+              <Button onClick = {() => isDisplayTen()}>Draw Your 10 Cards</Button>
+            </div>
+              <Dimmer active inverted>
+                <Loader inverted>Shuffling</Loader>
+              </Dimmer>
+          </div>
+        )
+      } else {
+        return (
+          <div className="draw">
+            <Button onClick = {() => shuffleDeck()}>Shuffle Deck</Button>
+          </div>
+        )
+      }
     }
-  }
-  
+
   return (
     display()
   );
